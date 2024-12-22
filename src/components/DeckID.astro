@@ -1,0 +1,6 @@
+---
+let response = await fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
+let data = await response.json()
+---
+
+<h6>{data.deck_id}</h6>

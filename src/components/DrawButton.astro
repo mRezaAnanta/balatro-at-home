@@ -1,0 +1,24 @@
+---
+const { deckID = ''} = Astro.props
+---
+<!-- TODO: make this into react or something so i don't need to make a custom element -->
+<draw-button data-deck_id={deckID}>
+  <button class="draw-btn">Draw</button>
+</draw-button>
+
+<script>
+  class DrawButton extends HTMLElement {
+    constructor() {
+      super()
+    // connectedCallBack() {
+      const deckID = this.dataset.deck_id
+      const button = this.querySelector('button.draw-btn')
+      button.addEventListener('click', () => {
+        console.log(deckID)
+        alert(deckID)
+      })
+    }
+  }
+
+  customElements.define('draw-button', DrawButton)
+</script>

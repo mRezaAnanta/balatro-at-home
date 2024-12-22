@@ -1,0 +1,28 @@
+---
+// let response = await fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
+// let data = await response.json()
+---
+<!-- TODO: make this into react or something so i don't need to make a custom element -->
+<reset-button>
+  <button class="reset-btn">Reset</button>
+</reset-button>
+
+<script>
+  class ResetButton extends HTMLElement {
+    constructor() {
+      super()
+    // connectedCallBack() {
+      const button = this.querySelector('button.reset-btn')
+      button.addEventListener('click', () => {
+        fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
+          .then(res => res.json()) // parse response as JSON
+          .then(data => {
+            console.log(data.deck_id)
+            alert(data.deck_id)
+          })
+      })
+    }
+  }
+
+  customElements.define('reset-button', ResetButton)
+</script>

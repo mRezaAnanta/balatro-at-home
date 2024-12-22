@@ -1,15 +1,25 @@
 ---
-// import Welcome from '../components/Welcome.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-let response = await fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
-let data = await response.json()
+import DrawButton from '../components/DrawButton.astro'
+import ResetButton from '../components/ResetButton.astro'
+import DeckID from '../components/DeckID.astro'
 ---
 
 <BaseLayout>
 	<!-- <Welcome /> -->
 	<h1>BALATRO AT HOME!</h1>
 	<!-- <h6 class="deckID">DeckID</h6> -->
-	<h6>{data.deck_id}</h6>
-	<!-- <script type="text/javascript" src="../utils/main.js"></script> -->
+  <DeckID />
+  <h2 class="status"></h2>
+  <h3 class="player1">Player 1</h3>
+  <img src="" alt="" class="player1">
+  <h3 class="player2">Player 2</h3>
+  <img src="" alt="" class="player2">
+  <!-- <button type="" class="draw-two">Draw Two</button> -->
+  <!-- <button type="" class="reset">Reset</button> -->
+  <!-- TODO: make a card components and it's logic -->
+  <!-- TODO: make a draw button and it's javascript logic inside of a components -->
+  <!-- <DrawButton deckID={data.deck_id} /> -->
+  <ResetButton />
+	<!-- <script src="../utils/main.js"></script> -->
 </BaseLayout>

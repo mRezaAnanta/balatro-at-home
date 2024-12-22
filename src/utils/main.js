@@ -1,15 +1,21 @@
 let deckID = ''
 
-document.querySelector('button.drawTwo').addEventListener('click', drawTwo)
+document.querySelector('button.draw-two').addEventListener('click', drawTwo)
 document.querySelector('button.reset').addEventListener('click', reset)
 
-// document.querySelector('button').addEventListener('click', anothaOne)
-//
-// function anothaOne() {
-//   let botScore = Number(localStorage.getItem('botScore'))
-//   botScore = botScore + 1
-//   localStorage.setItem('botScore', botScore)
-// }
+fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
+  .then(res => res.json()) // parse response as JSON
+  .then(data => {
+    console.log(data)
+    deckID = data.deck_id
+    document.querySelector('h6.deckID').innerText = deckID
+    // if (!localStorage.getItem('deckID')) {
+    localStorage.setItem('deckID', `${deckID}`)
+    // }
+  })
+  .catch(err => {
+    console.log(`error ${err}`)
+  });
 
 function reset() {
   fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
@@ -34,9 +40,9 @@ function drawTwo() {
     .then(res => res.json()) // parse response as JSON
     .then(data => {
       console.log(data)
-      document.querySelector('img.card-1').src = data.cards[0].image
-      document.querySelector('img.card-2').src = data.cards[1].image
-      document.querySelector('h2').innerText = whoWin(data.cards[0].value, data.cards[1].value)
+      document.querySelector('img.player1').src = data.cards[0].image
+      document.querySelector('img.player2').src = data.cards[1].image
+      document.querySelector('h2.status').innerText = whoWin(data.cards[0].value, data.cards[1].value)
     })
     .catch(err => {
       console.log(`error ${err}`)
