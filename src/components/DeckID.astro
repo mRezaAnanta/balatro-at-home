@@ -1,10 +1,19 @@
----
-import { deckID } from '../utils/deckId.js'
-let response = await fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
-let data = await response.json()
+<h6 class="deck-id"></h6>
 
-// deckID = data.deck_id
-deckID.set(data.deck_id)
----
+<script>
+  import { $deckId } from '../utils/deckStores.js'
+  let h6 = document.querySelector('h6.deck-id')
 
-<h6>{deckID}</h6>
+  fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
+    .then(res => res.json()) // parse response as JSON
+    .then(data => {
+      $deckId.set(data.deck_id)
+      console.log(data)
+      console.log($deckId.get())
+      // h6.innerText = $deckId.value
+      h6.innerText = $deckId.get()
+  })
+  .catch(err => {
+    console.log(`error ${err}`)
+  });
+</script>

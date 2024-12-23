@@ -9,6 +9,7 @@
 
 <script>
   // import { deckID } from 'DeckID.astro'
+  import { $deckId } from '../utils/deckStores.js'
 
   class ResetButton extends HTMLElement {
     constructor() {
@@ -19,8 +20,10 @@
         fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
           .then(res => res.json()) // parse response as JSON
           .then(data => {
+            $deckId.set(data.deck_id)
             console.log(data.deck_id)
-            alert(data.deck_id)
+            console.log($deckId.get())
+            document.querySelector('h6.deck-id').innerText = $deckId.get()
             // deckID = data.deck_id
           })
       })
