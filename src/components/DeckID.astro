@@ -1,6 +1,10 @@
 ---
+import { deckID } from '../utils/deckId.js'
 let response = await fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
 let data = await response.json()
+
+// deckID = data.deck_id
+deckID.set(data.deck_id)
 ---
 
-<h6>{data.deck_id}</h6>
+<h6>{deckID}</h6>

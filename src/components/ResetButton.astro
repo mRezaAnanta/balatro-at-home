@@ -8,6 +8,8 @@
 </reset-button>
 
 <script>
+  // import { deckID } from 'DeckID.astro'
+
   class ResetButton extends HTMLElement {
     constructor() {
       super()
@@ -19,6 +21,7 @@
           .then(data => {
             console.log(data.deck_id)
             alert(data.deck_id)
+            // deckID = data.deck_id
           })
       })
     }
