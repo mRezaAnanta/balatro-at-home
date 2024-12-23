@@ -1,0 +1,26 @@
+<discard-button>
+  <button class="discard-btn">Discard</button>
+</discard-button>
+
+<script>
+  import { $deckId } from '../utils/deckStores.js'
+  import { $handLimit, $currentHand } from '../utils/hand.js'
+
+  class DiscardButton extends HTMLElement {
+    constructor() {
+      super()
+
+      const button = this.querySelector('button.discard-btn')
+
+      // probably going to have to make a card at hand stores to store the hand obj too
+      // make it so that the button can see which card checkbox is being ticked
+      // delete each card that's ticked and get it's length
+      // then draw again by it's length - hand limit
+      button.addEventListener('click', () => {
+
+      })
+    }
+  }
+
+  customElements.define('discard-button', DiscardButton)
+</script>
