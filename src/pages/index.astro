@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro'
 import DrawButton from '../components/DrawButton.astro'
 import ResetButton from '../components/ResetButton.astro'
 import DeckID from '../components/DeckID.astro'
@@ -7,9 +7,7 @@ import HandCard from '../components/HandCard.astro'
 ---
 
 <BaseLayout>
-	<!-- <Welcome /> -->
 	<h1>BALATRO AT HOME!</h1>
-	<!-- <h6 class="deckID">DeckID</h6> -->
   <DeckID />
   <ResetButton />
   <h2 class="status"></h2>
@@ -17,12 +15,6 @@ import HandCard from '../components/HandCard.astro'
   <img src="" alt="" class="player1">
   <h3 class="player2">Player 2</h3>
   <img src="" alt="" class="player2">
-  <!-- <button type="" class="draw-two">Draw Two</button> -->
-  <!-- <button type="" class="reset">Reset</button> -->
-  <!-- TODO: make a card components and it's logic -->
-  <!-- TODO: make a draw button and it's javascript logic inside of a components -->
-  <!-- <DrawButton deckID={data.deck_id} /> -->
   <HandCard />
   <DrawButton />
-	<!-- <script src="../utils/main.js"></script> -->
 </BaseLayout>

@@ -1,8 +1,10 @@
 <h6 class="deck-id"></h6>
+<h6 class="remaining-deck"></h6>
 
 <script>
-  import { $deckId } from '../utils/deckStores.js'
+  import { $deckId, $remainingDeck } from '../utils/deckStores.js'
   let h6 = document.querySelector('h6.deck-id')
+  // let current = document.querySelector('h6.current-deck')
 
   fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
     .then(res => res.json()) // parse response as JSON
@@ -12,8 +14,14 @@
       console.log($deckId.get())
       // h6.innerText = $deckId.value
       h6.innerText = $deckId.get()
+      // current.innerText = $currentDeck.get()
   })
   .catch(err => {
     console.log(`error ${err}`)
   });
+
+  const remainingListener = $remainingDeck.subscribe((value, oldValue) => {
+    document.querySelector('h6.remaining-deck').innerText = `${$remainingDeck.get()}`
+    console.log(`remaining value changed from ${oldValue} to ${value}`)
+  })
 </script>
