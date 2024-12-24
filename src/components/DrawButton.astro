@@ -36,7 +36,9 @@
             const input = document.createElement('input')
 
             input.type = 'checkbox'
-            input.value = element.value
+            input.value = element.code
+            // input.classList.add(`card-${index}`)
+            input.classList.add(`card-checkbox`)
             img.src = element.image
 
             div.appendChild(img)

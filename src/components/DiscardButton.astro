@@ -17,7 +17,29 @@
       // delete each card that's ticked and get it's length
       // then draw again by it's length - hand limit
       button.addEventListener('click', () => {
+        // let count = document.querySelector('div.hand-card-container').childElementCount
+        // console.log(count)
 
+        let cards = []
+        let ticked = document.getElementsByClassName('card-checkbox')
+        // let ticked = document.querySelectorAll('input.card-checkbox:checked').length
+        console.log(ticked)
+        for(let i = 0; ticked[i]; i++) {
+          if(ticked[i].checked) {
+            cards.push(ticked[i].value)
+            // for some reason the remove() will make the loop stops so we can't discard multiple card at the same time
+            ticked[i].parentElement.remove()
+            // ticked[i].parentElement.hidden()
+          }
+        }
+        // see what kind of obj ticked is?
+        // ticked.forEach(box => {
+        //   if(box.checked) {
+        //     cards.push(box.value)
+        //     box.parentElement.remove()
+        //   }
+        // })
+        console.log(cards)
       })
     }
   }
