@@ -3,34 +3,74 @@
 </discard-button>
 
 <script>
-  import { $deckId } from '../utils/deckStores.js'
-  import { $handLimit, $currentHand } from '../utils/handStores.js'
+  import { $deckId, $remainingDeck } from '../utils/deckStores.js'
+  import { $handLimit, $currentHand, $discardedCard } from '../utils/handStores.js'
 
   class DiscardButton extends HTMLElement {
     constructor() {
       super()
 
+      let cards = []
       const button = this.querySelector('button.discard-btn')
 
-      // probably going to have to make a card at hand stores to store the hand obj too
-      // make it so that the button can see which card checkbox is being ticked
-      // delete each card that's ticked and get it's length
-      // then draw again by it's length - hand limit
-      let cards = []
       button.addEventListener('click', () => {
-        // let count = document.querySelector('div.hand-card-container').childElementCount
-        // console.log(count)
+        let currentDiscarded = []
 
         let ticked = document.querySelectorAll('input.card-checkbox')
         console.log(ticked)
 
+        // checked which checkbox is being ticked
         ticked.forEach(box => {
           if(box.checked) {
             cards.push(box.value)
+            currentDiscarded.push(box.value)
             box.parentElement.remove()
           }
         })
-        console.log(cards)
+        
+        // set the discardedCard stores to cards and set currentHand stores to the currently discarded card minus the currentHand
+        $discardedCard.set(cards)
+        console.log($discardedCard.get())
+        $currentHand.set($currentHand.get() - currentDiscarded.length)
+
+        // then draw again by the currentHand - hand limit
+        const url = `https://deckofcardsapi.com/api/deck/${$deckId.get()}/draw/?count=${$handLimit.get() - $currentHand.get()}`
+
+        fetch(url)
+          .then(res => res.json()) // parse response as JSON
+          .then(data => {
+
+            if($currentHand == 0) {
+              $currentHand.set(data.cards.length)
+            } else {
+              $currentHand.set($currentHand.get() + data.cards.length)
+            }
+
+            $remainingDeck.set(data.remaining)
+
+            //debugging
+            console.log(data)
+            console.log($currentHand.get())
+
+            //Card display logic
+            data.cards.forEach((element, index) => {
+              const div = document.createElement('div')
+              const img = document.createElement('img')
+              const input = document.createElement('input')
+
+              input.type = 'checkbox'
+              input.value = element.code
+              input.classList.add(`card-checkbox`)
+              img.src = element.image
+
+              div.appendChild(img)
+              div.appendChild(input)
+              document.querySelector('div.hand-card-container').appendChild(div)
+            })
+          })
+          .catch(err => {
+            console.log(`error ${err}`)
+          })
       })
     }
   }

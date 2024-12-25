@@ -23,7 +23,12 @@
 
           //debugging
           console.log(data)
-          $currentHand.set(data.cards.length)
+          if($currentHand == 0) {
+            $currentHand.set(data.cards.length)
+          } else {
+            $currentHand.set($currentHand.get() + data.cards.length)
+          }
+
           console.log($currentHand.get())
 
           $remainingDeck.set(data.remaining)
