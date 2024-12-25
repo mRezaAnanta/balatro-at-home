@@ -4,7 +4,7 @@
 
 <script>
   import { $deckId } from '../utils/deckStores.js'
-  import { $handLimit, $currentHand } from '../utils/hand.js'
+  import { $handLimit, $currentHand } from '../utils/handStores.js'
 
   class DiscardButton extends HTMLElement {
     constructor() {
@@ -16,29 +16,20 @@
       // make it so that the button can see which card checkbox is being ticked
       // delete each card that's ticked and get it's length
       // then draw again by it's length - hand limit
+      let cards = []
       button.addEventListener('click', () => {
         // let count = document.querySelector('div.hand-card-container').childElementCount
         // console.log(count)
 
-        let cards = []
-        let ticked = document.getElementsByClassName('card-checkbox')
-        // let ticked = document.querySelectorAll('input.card-checkbox:checked').length
+        let ticked = document.querySelectorAll('input.card-checkbox')
         console.log(ticked)
-        for(let i = 0; ticked[i]; i++) {
-          if(ticked[i].checked) {
-            cards.push(ticked[i].value)
-            // for some reason the remove() will make the loop stops so we can't discard multiple card at the same time
-            ticked[i].parentElement.remove()
-            // ticked[i].parentElement.hidden()
+
+        ticked.forEach(box => {
+          if(box.checked) {
+            cards.push(box.value)
+            box.parentElement.remove()
           }
-        }
-        // see what kind of obj ticked is?
-        // ticked.forEach(box => {
-        //   if(box.checked) {
-        //     cards.push(box.value)
-        //     box.parentElement.remove()
-        //   }
-        // })
+        })
         console.log(cards)
       })
     }

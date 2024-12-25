@@ -9,7 +9,7 @@
 
 <script>
   import { $deckId } from '../utils/deckStores.js'
-  import { $handLimit, $currentHand } from '../utils/hand.js'
+  import { $handLimit, $currentHand } from '../utils/handStores.js'
 
   // if the currentHand value is changed from the drawbutton then it will change the span to the appropriate number of cards on our hand
   const handListener = $currentHand.subscribe((value, oldValue) => {
