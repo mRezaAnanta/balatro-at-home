@@ -47,3 +47,4 @@ All commands are run from the root of the project, from a terminal:
 ## References
 - ante = levels (normal game consisted of 8 levels)
 - round = blinds (each levels for normal game consisted of 3 rounds)
+- hands and discards = how many times you can discard and deals cards
