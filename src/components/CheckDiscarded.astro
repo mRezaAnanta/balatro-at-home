@@ -1,0 +1,10 @@
+<button class="checkdiscard-button">Check Discard</button>
+
+<script>
+  import { $discardedCard } from '../utils/deckStores.js'
+  const button = document.querySelector('button.checkdiscard-button')
+
+  button.addEventListener('click', () => {
+    console.log($discardedCard.get())
+  })
+</script>

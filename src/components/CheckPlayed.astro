@@ -1,0 +1,10 @@
+<button class="checkplayed-button">Check Played</button>
+
+<script>
+  import { $currentPlayed } from '../utils/handStores.js'
+  const button = document.querySelector('button.checkplayed-button')
+
+  button.addEventListener('click', () => {
+    console.log($currentPlayed.get())
+  })
+</script>

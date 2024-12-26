@@ -1,0 +1,12 @@
+<button class="checkwin-button">Check Win</button>
+
+<script>
+  import { $currentPlayed } from '../utils/handStores.js'
+  import { count } from '../utils/card.js'
+  import { winCond } from '../utils/blind.js'
+  const button = document.querySelector('button.checkwin-button')
+
+  button.addEventListener('click', () => {
+    console.log(winCond(count(['1H', '2S', 'AD']), 10))
+  })
+</script>

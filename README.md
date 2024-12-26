@@ -33,8 +33,9 @@ All commands are run from the root of the project, from a terminal:
 
 - [x] draw card
 - [x] discarding button
-- [] deal cards button
+- [x] deal cards button
 - [] card count logic
+- [] poker logic
 - [] sort card based on their rank or suit button and logic
 - [] start game windows
 - [] windows for the game (blinds, ante, score, etc) on the left

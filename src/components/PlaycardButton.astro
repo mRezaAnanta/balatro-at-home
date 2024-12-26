@@ -1,21 +1,20 @@
-<discard-button>
-  <button class="discard-btn">Discard</button>
-</discard-button>
+<playcard-button>
+  <button class="playcard-btn">Play Card</button>
+</playcard-button>
 
 <script>
   import { $deckId, $remainingDeck, $discardedCard } from '../utils/deckStores.js'
-  import { $handLimit, $currentHand } from '../utils/handStores.js'
+  import { $handLimit, $currentHand, $currentPlayed, $playedCard, $roundScore } from '../utils/handStores.js'
 
-  class DiscardButton extends HTMLElement {
+  class PlaycardButton extends HTMLElement {
     constructor() {
       super()
 
       let cards = []
-      const button = this.querySelector('button.discard-btn')
+      const button = this.querySelector('button.playcard-btn')
 
       button.addEventListener('click', () => {
-        let currentDiscarded = []
-
+        let currentPlayed = []
         let ticked = document.querySelectorAll('input.card-checkbox')
         console.log(ticked)
 
@@ -23,15 +22,19 @@
         ticked.forEach(box => {
           if(box.checked) {
             cards.push(box.value)
-            currentDiscarded.push(box.value)
+            currentPlayed.push(box.value)
             box.parentElement.remove()
           }
         })
         
         // set the discardedCard stores to cards and set currentHand stores to the currently discarded card minus the currentHand
-        $discardedCard.set(cards)
-        console.log($discardedCard.get())
-        $currentHand.set($currentHand.get() - currentDiscarded.length)
+        $currentPlayed.set(cards)
+        // $playedCard.set($currentPlayed.get())
+        console.log($currentPlayed.get())
+        $currentHand.set($currentHand.get() - currentPlayed.length)
+
+        //count the score logic
+
 
         // then draw again by the currentHand - hand limit
         const url = `https://deckofcardsapi.com/api/deck/${$deckId.get()}/draw/?count=${$handLimit.get() - $currentHand.get()}`
@@ -75,5 +78,5 @@
     }
   }
 
-  customElements.define('discard-button', DiscardButton)
+  customElements.define('playcard-button', PlaycardButton)
 </script>

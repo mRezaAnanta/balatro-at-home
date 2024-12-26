@@ -5,13 +5,21 @@ import ResetButton from '../components/ResetButton.astro'
 import DeckID from '../components/DeckID.astro'
 import HandCard from '../components/HandCard.astro'
 import DiscardButton from '../components/DiscardButton.astro'
+import PlaycardButton from '../components/PlaycardButton.astro'
+import CheckDiscarded from '../components/CheckDiscarded.astro'
+import CheckPlayed from '../components/CheckPlayed.astro'
+import CheckWin from '../components/CheckWin.astro'
 ---
 
 <BaseLayout>
 	<h1>BALATRO AT HOME!</h1>
   <DeckID />
+  <!-- <CheckDiscarded /> -->
+  <!-- <CheckPlayed /> -->
+  <CheckWin />
   <ResetButton />
   <DiscardButton />
+  <PlaycardButton />
   <h2 class="status"></h2>
   <HandCard />
   <DrawButton />
