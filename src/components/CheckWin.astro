@@ -4,9 +4,19 @@
   import { $currentPlayed } from '../utils/handStores.js'
   import { count } from '../utils/card.js'
   import { winCond } from '../utils/blind.js'
+  import { $ante, $round } from '../utils/gameStores.js'
   const button = document.querySelector('button.checkwin-button')
 
   button.addEventListener('click', () => {
-    console.log(winCond(count(['1H', '2S', 'AD']), 10))
+    // console.log(winCond(count(['1H', '2S', 'AD']), 10))
+    // if(winCond(count(['1H', '2S', 'AD']), 10)) {
+    //   $ante.set($ante.get() + 1)
+    //   $round.set($round.get() + 1)
+    // }
+    console.log($currentPlayed.get())
+    if(winCond(count($currentPlayed.get()), 10)) {
+      $ante.set($ante.get() + 1)
+      $round.set($round.get() + 1)
+    }
   })
 </script>

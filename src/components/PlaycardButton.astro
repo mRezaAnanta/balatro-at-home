@@ -1,17 +1,20 @@
-<playcard-button>
-  <button class="playcard-btn">Play Card</button>
-</playcard-button>
+<playhand-button>
+  <button class="playhand-btn">Play Hand</button>
+</playhand-button>
 
 <script>
   import { $deckId, $remainingDeck, $discardedCard } from '../utils/deckStores.js'
-  import { $handLimit, $currentHand, $currentPlayed, $playedCard, $roundScore } from '../utils/handStores.js'
+  import { $handLimit, $currentHand, $currentPlayed, $playedCard } from '../utils/handStores.js'
+  import { $roundScore, $round } from '../utils/gameStores.js'
+  import { winCond } from '../utils/blind.js'
+  import { count } from '../utils/card.js'
 
-  class PlaycardButton extends HTMLElement {
+  class PlayhandButton extends HTMLElement {
     constructor() {
       super()
 
       let cards = []
-      const button = this.querySelector('button.playcard-btn')
+      const button = this.querySelector('button.playhand-btn')
 
       button.addEventListener('click', () => {
         let currentPlayed = []
@@ -34,7 +37,17 @@
         $currentHand.set($currentHand.get() - currentPlayed.length)
 
         //count the score logic
+        console.log($currentPlayed.get())
+        let countnow = count($currentPlayed.get())
+        $roundScore.set(countnow)
+        let win = winCond(countnow, 10)
+        console.log(countnow)
+        console.log(win)
 
+        if(win === true) {
+          // $ante.set($ante.get() + 1)
+          $round.set($round.get() + 1)
+        }
 
         // then draw again by the currentHand - hand limit
         const url = `https://deckofcardsapi.com/api/deck/${$deckId.get()}/draw/?count=${$handLimit.get() - $currentHand.get()}`
@@ -42,7 +55,6 @@
         fetch(url)
           .then(res => res.json()) // parse response as JSON
           .then(data => {
-
             if($currentHand == 0) {
               $currentHand.set(data.cards.length)
             } else {
@@ -78,5 +90,5 @@
     }
   }
 
-  customElements.define('playcard-button', PlaycardButton)
+  customElements.define('playhand-button', PlayhandButton)
 </script>

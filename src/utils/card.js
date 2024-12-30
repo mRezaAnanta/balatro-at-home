@@ -1,5 +1,4 @@
 //card logic
-
 export const count = (cardArr, jokerArr = []) => {
   //get the value for each element inside of arr
   //split it to two to get the value (Ace, Jack or just it's number) and it's type (heart, spades etc)
@@ -21,17 +20,8 @@ export const count = (cardArr, jokerArr = []) => {
     '9': 9,
   }
 
-  // cardArr.map(x => {
-  //   // console.log(x.split(''))
-  //   // console.log(x[0], x[1])
-  //   // console.log(x[0] in val)
-  //   // console.log(val.x[0])
-  //   // console.log(Object.values(val))
-  //   console.log(val[x[0]])
-  // })
-  //
   console.log(cardArr.map(x => val[x[0]]).reduce((prev, cur) => prev + cur))
   return cardArr.map(x => val[x[0]]).reduce((prev, cur) => prev + cur)
 }
-
-count(['1H', '2S', 'AD'])
+//
+// count(['1H', '2S', 'AD'])

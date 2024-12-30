@@ -6,12 +6,27 @@
 // like making the score bigger than the normal score for the boss
 // or maybe debuffed certain cards
 
-const blind = ["Small Bind", "Big Blind", ""]
+const blind = ["Small Bind", "Big Blind", "Boss Blind"]
 const ante = {
-  1: [300, 600, 900],
-  2: [300, 600, 900]
+  1: 300,
+  2: 800,
+  3: 2000,
+  4: 5000,
+  5: 11000,
+  6: 20000,
+  7: 35000,
+  8: 50000,
 }
 export const winCond = (score, boss) => {
   console.log(score, boss)
   return score >= boss
+}
+export const smallBlind = (basescore) => {
+  return basescore * 1
+}
+export const bigBlind = (basescore) => {
+  return basescore * 1.5
+}
+export const bossBlind = (basescore) => {
+  return basescore * 2
 }
