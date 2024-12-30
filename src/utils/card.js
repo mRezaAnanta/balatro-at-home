@@ -59,7 +59,7 @@ export const drawCard = (deck, num) => {
   console.log(drawed, num, deck, deck.length)
   return {
     drawedCard: drawed,
-    remainingDeck: deck
+    deck: deck
   }
 }
 // drawCard(baseDeck, 8)

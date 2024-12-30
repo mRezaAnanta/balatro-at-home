@@ -11,12 +11,15 @@
 // console.log(images)
 ---
 
-<draw-button data-images=images>
+<!-- <draw-button data-images=images> -->
+<draw-button>
   <button class="draw-btn">Draw</button>
 </draw-button>
 
 <script>
   import { drawCard, baseDeck } from '../utils/card.js'
+  import { $deck, $remainingDeck } from '../utils/deckStores.js'
+  import { $handLimit, $currentHand } from '../utils/handStores.js'
 
   class DrawButton extends HTMLElement {
     constructor() {
@@ -24,9 +27,33 @@
 
       const button = this.querySelector('button.draw-btn')
       button.addEventListener('click', () => {
-        const {drawedCard, remainingDeck } = drawCard(baseDeck, 8)
-        console.log(drawedCard, remainingDeck)
-        // console.log(this.images)
+        // TODO: if deckstore does exist then get the current value type arr
+        // if not then get the baseDeck
+        // let {drawedCard, deck } = drawCard(baseDeck, $handLimit.get())
+        let drawedCard, deck
+        if($deck.get().length == 0) {
+          let dd = drawCard(baseDeck, $handLimit.get())
+          drawedCard = dd.drawedCard
+          deck = dd.deck
+          console.log('0')
+        } else {
+          let dd = drawCard($deck, $handLimit.get())
+          drawedCard = dd.drawedCard
+          deck = dd.deck
+          console.log('1')
+        }
+        console.log(drawedCard, deck)
+        $deck.set(deck)
+        $remainingDeck.set($deck.get().length)
+        // $drawedCard.set($deck.get().length)
+        // console.log($deck.get())
+
+        if($currentHand == 0) {
+          $currentHand.set(drawedCard.length)
+        } else {
+          $currentHand.set($currentHand.get() + drawedCard.length)
+        }
+
         drawedCard.forEach((element, index) => {
           const div = document.createElement('div')
           const img = document.createElement('img')
