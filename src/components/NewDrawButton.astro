@@ -1,0 +1,52 @@
+---
+// import type { ImageMetadata } from 'astro';
+// // import { Image } from 'astro:assets';
+//
+// interface Props {
+//    imagePath: string;
+// }
+//
+// const { imagePath } = Astro.props;
+// const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif}')
+// console.log(images)
+---
+
+<draw-button data-images=images>
+  <button class="draw-btn">Draw</button>
+</draw-button>
+
+<script>
+  import { drawCard, baseDeck } from '../utils/card.js'
+
+  class DrawButton extends HTMLElement {
+    constructor() {
+      super()
+
+      const button = this.querySelector('button.draw-btn')
+      button.addEventListener('click', () => {
+        const {drawedCard, remainingDeck } = drawCard(baseDeck, 8)
+        console.log(drawedCard, remainingDeck)
+        // console.log(this.images)
+        drawedCard.forEach((element, index) => {
+          const div = document.createElement('div')
+          const img = document.createElement('img')
+          const input = document.createElement('input')
+
+          input.type = 'checkbox'
+          input.value = element.code
+          input.classList.add(`card-checkbox`)
+          // TODO: set the src to the local pic
+          // TODO: search how to dynamically import img in astro.js
+          // well atleast just getting the img from the web itself works :|
+          img.src = `https://deckofcardsapi.com/static/img/${element}.png`
+
+          div.appendChild(img)
+          div.appendChild(input)
+          document.querySelector('div.hand-card-container').appendChild(div)
+        })
+      })
+    }
+  }
+
+  customElements.define('draw-button', DrawButton)
+</script>

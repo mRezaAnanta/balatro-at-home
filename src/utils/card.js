@@ -44,7 +44,7 @@ export const baseDeck = [
   '2S', '3S', '4S', '5S', '6S', '7S', '8S', '9S', '0S', 'JS', 'QS', 'KS', 'AS',
 ]
 
-const drawCard = (deck, num) => {
+export const drawCard = (deck, num) => {
   // TODO: loop deck based on num
   // get the value at random and remove it from initial arr
   // return the new arr with drawed card
@@ -52,14 +52,14 @@ const drawCard = (deck, num) => {
   let drawed = []
   let i = 0
   while (i < num) {
-    // get random integer between 0 and the length of the deck
-    // put the rand int inside of let so that you won't lose the value
     drawed.push(deck[Math.floor(Math.random() * (deck.length - 0) + 0)])
-    // delete the drawed card from the original deck
+    deck = deck.filter(x => x !== drawed[drawed.length - 1])
     i++
   }
-  console.log(drawed, num)
-  return drawed
+  console.log(drawed, num, deck, deck.length)
+  return {
+    drawedCard: drawed,
+    remainingDeck: deck
+  }
 }
-
-drawCard(baseDeck, 8)
+// drawCard(baseDeck, 8)
