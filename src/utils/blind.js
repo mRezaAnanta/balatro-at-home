@@ -30,3 +30,18 @@ export const bigBlind = (basescore) => {
 export const bossBlind = (basescore) => {
   return basescore * 2
 }
+
+//Blind obj
+class blindObj {
+  constructor(name, desc, mult, img) {
+    this.name = name
+    this.desc = desc
+    this.mult = mult
+    this.img = img
+  }
+  specialEffect() {
+    console.log("Good day, I am now on!")
+    //do stuff here
+  }
+}
+let smallB = new blindObj('Small Blind', 'just small', 1, 'Classic Pro')
