@@ -25,3 +25,41 @@ export const count = (cardArr, jokerArr = []) => {
 }
 //
 // count(['1H', '2S', 'AD'])
+//
+// class cardObj {
+//   constructor(value, img) {
+//     this.value = value
+//     this.img = img
+//   }
+// }
+//
+// const 2H = new cardObj('2H', '../assets/cards/2H.png')
+// TODO: maybe just make a random card drawing func
+// and then make the playcard comp and discard comp get the asset by using template literal
+
+export const baseDeck = [
+  '2C', '3C', '4C', '5C', '6C', '7C', '8C', '9C', '0C', 'JC', 'QC', 'KC', 'AC',
+  '2D', '3D', '4D', '5D', '6D', '7D', '8D', '9D', '0D', 'JD', 'QD', 'KD', 'AD',
+  '2H', '3H', '4H', '5H', '6H', '7H', '8H', '9H', '0H', 'JH', 'QH', 'KH', 'AH',
+  '2S', '3S', '4S', '5S', '6S', '7S', '8S', '9S', '0S', 'JS', 'QS', 'KS', 'AS',
+]
+
+const drawCard = (deck, num) => {
+  // TODO: loop deck based on num
+  // get the value at random and remove it from initial arr
+  // return the new arr with drawed card
+  // return the previous arr with drawed card deleted
+  let drawed = []
+  let i = 0
+  while (i < num) {
+    // get random integer between 0 and the length of the deck
+    // put the rand int inside of let so that you won't lose the value
+    drawed.push(deck[Math.floor(Math.random() * (deck.length - 0) + 0)])
+    // delete the drawed card from the original deck
+    i++
+  }
+  console.log(drawed, num)
+  return drawed
+}
+
+drawCard(baseDeck, 8)

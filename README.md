@@ -35,6 +35,7 @@ All commands are run from the root of the project, from a terminal:
 - [x] discarding button
 - [x] deal cards button
 - [x] card count logic
+- [] change from using api to just using ingame stuff
 - [] poker logic
 - [] sort card based on their rank or suit button and logic
 - [] start game windows

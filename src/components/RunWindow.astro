@@ -31,6 +31,7 @@
 
   const roundListener = $round.subscribe((value, oldValue) => {
     document.querySelector('h6.round').innerText = `${$round.get()}`
+    document.querySelector('h6.score').innerText = `${$roundScore.set(0)}`
     console.log(`round value changed from ${oldValue} to ${value}`)
   })
 
@@ -41,11 +42,11 @@
 
   const discardsListener = $discardsRemaining.subscribe((value, oldValue) => {
     document.querySelector('h6.discards').innerText = `${$discardsRemaining.get()}`
-  console.log(`discardsRemaining value changed from ${oldValue} to ${value}`)
+    console.log(`discardsRemaining value changed from ${oldValue} to ${value}`)
   })
 
   const moneyListener = $money.subscribe((value, oldValue) => {
     document.querySelector('h6.money').innerText = `${$money.get()}`
-  console.log(`discardsRemaining value changed from ${oldValue} to ${value}`)
+    console.log(`discardsRemaining value changed from ${oldValue} to ${value}`)
   })
 </script>
