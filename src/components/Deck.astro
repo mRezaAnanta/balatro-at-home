@@ -1,0 +1,11 @@
+<img src="https://deckofcardsapi.com/static/img/back.png" alt="">
+<h6 class="remaining-deck"></h6>
+
+<script>
+  import { $remainingDeck } from '../utils/deckStores.js'
+
+  const remainingListener = $remainingDeck.subscribe((value, oldValue) => {
+    document.querySelector('h6.remaining-deck').innerText = `${$remainingDeck.get()}`
+    console.log(`remaining value changed from ${oldValue} to ${value}`)
+  })
+</script>

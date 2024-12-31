@@ -2,11 +2,13 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 // import DrawButton from '../components/DrawButton.astro'
 import NewDrawButton from '../components/NewDrawButton.astro'
-import ResetButton from '../components/ResetButton.astro'
+// import ResetButton from '../components/ResetButton.astro'
 import DeckID from '../components/DeckID.astro'
+import Deck from '../components/Deck.astro'
 import HandCard from '../components/HandCard.astro'
 import DiscardButton from '../components/DiscardButton.astro'
-import PlaycardButton from '../components/PlaycardButton.astro'
+// import PlaycardButton from '../components/PlaycardButton.astro'
+import NewPlaycardButton from '../components/NewPlaycardButton.astro'
 import CheckDiscarded from '../components/CheckDiscarded.astro'
 import CheckPlayed from '../components/CheckPlayed.astro'
 import CheckWin from '../components/CheckWin.astro'
@@ -14,17 +16,13 @@ import RunWindow from '../components/RunWindow.astro'
 ---
 
 <BaseLayout>
-	<h1>BALATRO AT HOME!</h1>
-  <DeckID />
-  <RunWindow />
-  <!-- <CheckDiscarded /> -->
-  <!-- <CheckPlayed /> -->
-  <CheckWin />
-  <ResetButton />
-  <DiscardButton />
-  <PlaycardButton />
-  <h2 class="status"></h2>
-  <HandCard />
-  <!-- <DrawButton /> -->
-  <NewDrawButton />
+	<h1 class="text-center text-5xl font-bold font-mono">BALATRO AT HOME!</h1>
+  <div class="flex">
+    <RunWindow />
+    <DiscardButton />
+    <NewPlaycardButton />
+    <HandCard />
+    <NewDrawButton />
+    <Deck />
+  </div>
 </BaseLayout>

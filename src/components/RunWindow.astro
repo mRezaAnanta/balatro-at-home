@@ -1,23 +1,29 @@
 <div>
-  <h6 class="score"></h6>
+  <label for="">Score</label>
+  <h6 class="score">0</h6>
   <!-- <h6 class="poker"></h6> -->
   <!-- <h6 class="chips"></h6> -->
   <!-- <h6 class="mult"></h6> -->
+  <label for="">Ante</label>
   <h6 class="ante"></h6>
+  <label for="">Round</label>
   <h6 class="round"></h6>
+  <label for="">Hands</label>
   <h6 class="hands"></h6>
+  <label for="">Discards</label>
   <h6 class="discards"></h6>
+  <label for="">Money</label>
   <h6 class="money"></h6>
 </div>
 
 <script>
   import { $round, $ante, $roundScore, $handsRemaining, $discardsRemaining, $money } from '../utils/gameStores.js'
-  let elScore = document.querySelector('h6.score')
-  let elAnte = document.querySelector('h6.ante')
-  let elRound = document.querySelector('h6.round')
-  let elHands = document.querySelector('h6.hands')
-  let elDiscards = document.querySelector('h6.discards')
-  let elMoney = document.querySelector('h6.money')
+  // let elScore = document.querySelector('h6.score')
+  // let elAnte = document.querySelector('h6.ante')
+  // let elRound = document.querySelector('h6.round')
+  // let elHands = document.querySelector('h6.hands')
+  // let elDiscards = document.querySelector('h6.discards')
+  // let elMoney = document.querySelector('h6.money')
 
   const scoreListener = $roundScore.subscribe((value, oldValue) => {
     document.querySelector('h6.score').innerText = `${$roundScore.get()}`

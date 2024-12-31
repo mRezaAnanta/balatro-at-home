@@ -35,7 +35,10 @@ All commands are run from the root of the project, from a terminal:
 - [x] discarding button
 - [x] deal cards button
 - [x] card count logic
-- [] change from using api to just using ingame stuff
+- [x] change from using api to use local logic for drawing card and stuff
+- [] ui and ux fix (with their sounds and stuff)
+- [] for some reason the roundscore is undefined before you play card
+- [] dynamically serve img from assets (learn it from astro.js)
 - [] poker logic
 - [] sort card based on their rank or suit button and logic
 - [] start game windows
@@ -43,7 +46,6 @@ All commands are run from the root of the project, from a terminal:
 - [] joker & special cards windows & logic
 - [] money logic
 - [] shop window after you finished every round
-- [] ui and ux fix (with their sounds and stuff)
 - [] seeded run (might have to make a local api)(preferably with django rest framework)
 
 ## References
