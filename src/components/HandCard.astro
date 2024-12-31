@@ -2,7 +2,7 @@
 </div>
 
 <div>
-  <span></span>
+  <span class="currenthand"></span>
 </div>
 
 <script>
@@ -10,7 +10,7 @@
 
   // if the currentHand value is changed from the drawbutton then it will change the span to the appropriate number of cards on our hand
   const handListener = $currentHand.subscribe((value, oldValue) => {
-    document.querySelector('span').innerText = `${$currentHand.get()} / ${$handLimit.get()}`
+    document.querySelector('span.currenthand').innerText = `${$currentHand.get()} / ${$handLimit.get()}`
     console.log(`currentHand value changed from ${oldValue} to ${value}`)
   })
 </script>

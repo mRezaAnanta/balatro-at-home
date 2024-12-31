@@ -1,19 +1,64 @@
-<div>
-  <label for="">Score</label>
-  <h6 class="score">0</h6>
-  <!-- <h6 class="poker"></h6> -->
-  <!-- <h6 class="chips"></h6> -->
-  <!-- <h6 class="mult"></h6> -->
-  <label for="">Ante</label>
-  <h6 class="ante"></h6>
-  <label for="">Round</label>
-  <h6 class="round"></h6>
-  <label for="">Hands</label>
-  <h6 class="hands"></h6>
-  <label for="">Discards</label>
-  <h6 class="discards"></h6>
-  <label for="">Money</label>
-  <h6 class="money"></h6>
+<div class="w-1/3 max-w-screen-lg min-w-[300] bg-slate-700 text-center text-white font-bold">
+  <div>
+    <div class="flex flex-row bg-black border-4 rounded-xl border-black m-1 px-1 gap-1 justify-center">
+      <span class="w-1/4">Round score</span>
+      <!-- TODO: center the vertical alignment -->
+      <div class="w-3/4 content-center items-center self-center bg-slate-400 border-4 rounded-xl border-slate-400">
+        <h6 class="score text-3xl self-center">0</h6>
+        <!-- <h6 class="score hidden">0</h6> -->
+        <!-- <h6 class="initialscore text-3xl self-center">0</h6> -->
+      </div>
+    </div>
+    <div class="text-2xl bg-slate-900 border-4 rounded-xl border-slate-900 m-1">
+      <div>Poker Hand</div>
+      <div class="flex justify-center">
+        <div class="bg-blue-500 border-4 rounded-xl border-blue-500">
+          Chip
+        </div>
+        <span>X</span>
+        <div class="bg-red-600 border-4 rounded-xl border-red-600">
+          Mult
+        </div>
+      </div>
+    </div>
+    <div class="flex">
+      <div class="flex flex-col w-1/3 m-auto gap-1 p-2">
+        <button class="h-1/2 bg-red-600 border-4 rounded-xl border-red-600">Run<br>Info</button>
+        <button class="h-1/2 bg-orange-600 border-4 rounded-xl border-orange-600">Options</button>
+      </div>
+      <div class="w-2/3 flex flex-wrap">
+        <div class="w-1/2 bg-black border-4 rounded-xl border-black">
+          <span>Hands</span>
+          <div class="bg-slate-400 border-4 rounded-xl border-slate-400 text-xl">
+            <h6 class="hands">3</h6>
+          </div>
+        </div>
+        <div class="w-1/2 bg-black border-4 rounded-xl border-black">
+          <span>Discards</span>
+          <div class="bg-slate-400 border-4 rounded-xl border-slate-400 text-xl">
+            <h6 class="discards">1</h6>
+          </div>
+        </div>
+        <div class="w-full bg-black border-4 rounded-xl border-black">
+          <div class="bg-slate-400 border-4 rounded-xl border-slate-400 text-xl">
+            <h6 class="money">$4</h6>
+          </div>
+        </div>
+        <div class="w-1/2 bg-black border-4 rounded-xl border-black">
+          <span>Ante</span>
+          <div class="bg-slate-400 border-4 rounded-xl border-slate-400 text-xl">
+            <h6 class="ante">1/8</h6>
+          </div>
+        </div>
+        <div class="w-1/2 bg-black border-4 rounded-xl border-black">
+          <span>Round</span>
+          <div class="bg-slate-400 border-4 rounded-xl border-slate-400 text-xl">
+            <h6 class="round">1</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
