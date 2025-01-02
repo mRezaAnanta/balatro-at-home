@@ -73,9 +73,13 @@ const whichPoker = (card) => {
   // iterate through the obj and get it's key and value
   for (const [key, value] of Object.entries(obj)) {
     console.log(`${value}`)
+    if (value === 5) {
+      console.log('Flush Five')
+    }
   }
 
   // based on how many card that is the same
   // calculate which poker hand it is
 }
-whichPoker(['AH', 'AS', '2H', 'AH'])
+// whichPoker(['AH', 'AS', '2H', 'AH'])
+whichPoker(['AH', 'AH', 'AH', 'AH', 'AH'])
