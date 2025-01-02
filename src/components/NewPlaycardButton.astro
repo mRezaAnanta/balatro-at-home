@@ -64,7 +64,11 @@
           input.type = 'checkbox'
           input.value = `${element}`
           input.classList.add(`card-checkbox`)
+          // TODO: set the src to the local pic
+          // TODO: search how to dynamically import img in astro.js
+          // well atleast just getting the img from the web itself works :|
           img.src = `https://deckofcardsapi.com/static/img/${element}.png`
+          img.classList.add(`w-24`)
 
           div.appendChild(img)
           div.appendChild(input)
