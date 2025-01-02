@@ -1,0 +1,67 @@
+<discard-button>
+  <button class="discard-btn">Discard</button>
+</discard-button>
+
+<script>
+  import { $deck, $remainingDeck, $discardedCard } from '../utils/deckStores.js'
+  import { $handLimit, $currentHand } from '../utils/handStores.js'
+  import { drawCard } from '../utils/card.js'
+
+  class DiscardButton extends HTMLElement {
+    constructor() {
+      super()
+
+      let cards = []
+      const button = this.querySelector('button.discard-btn')
+
+      button.addEventListener('click', () => {
+        let currentDiscarded = []
+
+        let ticked = document.querySelectorAll('input.card-checkbox')
+        console.log(ticked)
+
+        // checked which checkbox is being ticked
+        ticked.forEach(box => {
+          if(box.checked) {
+            cards.push(box.value)
+            currentDiscarded.push(box.value)
+            box.parentElement.remove()
+          }
+        })
+        
+        // set the discardedCard stores to cards and set currentHand stores to the currently discarded card minus the currentHand
+        $discardedCard.set(cards)
+        $currentHand.set($currentHand.get() - currentDiscarded.length)
+        console.log($discardedCard.get())
+
+        let {drawedCard, deck } = drawCard($deck.get(), $handLimit.get() - $currentHand.get())
+        console.log(drawedCard, deck)
+        $remainingDeck.set(deck.length)
+        $deck.set(deck)
+        $currentHand.set($currentHand.get() + drawedCard.length)
+
+        //Card display logic
+        drawedCard.forEach((element, index) => {
+          const div = document.createElement('div')
+          const img = document.createElement('img')
+          const input = document.createElement('input')
+
+          input.type = 'checkbox'
+          input.value = `${element}`
+          input.classList.add(`card-checkbox`)
+          // TODO: set the src to the local pic
+          // TODO: search how to dynamically import img in astro.js
+          // well atleast just getting the img from the web itself works :|
+          img.src = `https://deckofcardsapi.com/static/img/${element}.png`
+          img.classList.add(`w-24`)
+
+          div.appendChild(img)
+          div.appendChild(input)
+          document.querySelector('div.hand-card-container').appendChild(div)
+        })
+      })
+    }
+  }
+
+  customElements.define('discard-button', DiscardButton)
+</script>
