@@ -32,6 +32,7 @@
         // let {drawedCard, deck } = drawCard(baseDeck, $handLimit.get())
         let drawedCard, deck
         if($deck.get().length == 0) {
+          $deck.set(baseDeck)
           let dd = drawCard(baseDeck, $handLimit.get())
           drawedCard = dd.drawedCard
           deck = dd.deck
@@ -43,16 +44,14 @@
           console.log('1')
         }
         console.log(drawedCard, deck)
-        $deck.set(deck)
-        $remainingDeck.set($deck.get().length)
-        // $drawedCard.set($deck.get().length)
-        // console.log($deck.get())
 
         if($currentHand == 0) {
           $currentHand.set(drawedCard.length)
         } else {
           $currentHand.set($currentHand.get() + drawedCard.length)
         }
+        $deck.set(deck)
+        $remainingDeck.set($deck.get().length)
 
         drawedCard.forEach((element, index) => {
           const div = document.createElement('div')
@@ -66,6 +65,7 @@
           // TODO: search how to dynamically import img in astro.js
           // well atleast just getting the img from the web itself works :|
           img.src = `https://deckofcardsapi.com/static/img/${element}.png`
+          img.classList.add(`w-24`)
 
           div.appendChild(img)
           div.appendChild(input)

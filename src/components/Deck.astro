@@ -1,11 +1,26 @@
-<img src="https://deckofcardsapi.com/static/img/back.png" alt="">
-<h6 class="remaining-deck"></h6>
+<img 
+  src="https://deckofcardsapi.com/static/img/back.png"
+  alt=""
+  class="w-24"
+>
+<h6 class="remaining-deck w-full"></h6>
+<div class="flex justify-end">
+  <span class="remaining-deck"></span>
+  <span>/</span>
+  <span class="deck"></span>
+</div>
 
 <script>
-  import { $remainingDeck } from '../utils/deckStores.js'
+  import { $remainingDeck, $deck } from '../utils/deckStores.js'
 
   const remainingListener = $remainingDeck.subscribe((value, oldValue) => {
-    document.querySelector('h6.remaining-deck').innerText = `${$remainingDeck.get()}`
+    document.querySelector('span.remaining-deck').innerText = `${$remainingDeck.get() }`
+    console.log(`remaining value changed from ${oldValue} to ${value}`)
+  })
+
+  // TODO: make another deck length store
+  const deckListener = $deck.subscribe((value, oldValue) => {
+    document.querySelector('span.deck').innerText = `${ $deck.get().length}`
     console.log(`remaining value changed from ${oldValue} to ${value}`)
   })
 </script>
