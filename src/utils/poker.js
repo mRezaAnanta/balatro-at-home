@@ -30,6 +30,10 @@ const whichPoker = (card) => {
   let suits = {}
   let obj = {}
 
+  // TODO: make a list so we can determine if it's a straight
+  let straight = ['A', 'K', 'Q', 'J', '0', '9', '8', '7', '6', '5', '4', '3', '2', 'A']
+  let royal = ['A', 'K', 'Q', 'J', '0']
+
   // // get rank and suit
   // card.map(x => {
   //   rank.push(x[0])
@@ -71,15 +75,67 @@ const whichPoker = (card) => {
   console.log(card, obj)
 
   // iterate through the obj and get it's key and value
-  for (const [key, value] of Object.entries(obj)) {
-    console.log(`${value}`)
-    if (value === 5) {
-      console.log('Flush Five')
+  // for (const [key, value] of Object.entries(obj)) {
+  //   console.log(`${value}`)
+  //   if (value === 5) {
+  //     console.log('Flush Five')
+  //   }
+  // }
+  if (Object.values(obj)[0] == 5) {
+    console.log('Flush Five')
+  }
+  if (Object.values(obj)[0] == 3 && Object.values(obj)[1] == 2) {
+    console.log('Flush House')
+  }
+  // console.log(Object.keys(obj))
+  // console.log(Object.keys(obj)[0][0])
+
+  // get the rank and suit
+  card.forEach(x => {
+    if (!ranks[x[0]]) {
+      ranks[x[0]] = 1
+    } else {
+      ranks[x[0]]++
     }
+  })
+  card.forEach(x => {
+    if (!suits[x[1]]) {
+      suits[x[1]] = 1
+    } else {
+      suits[x[1]]++
+    }
+  })
+  console.log(ranks, suits)
+  if (Object.values(ranks)[0] == 5) {
+    console.log('Five of a Kind')
+  }
+  if (Object.values(suits)[0] == 5) {
+    console.log('Flush')
   }
 
-  // based on how many card that is the same
-  // calculate which poker hand it is
+  // Royal Flush
+  // get index of each rank element inside card array 
+  // if the rank element index is missed by one then it's not straight
+  let rFlush = card.map(x => royal.includes(x[0])).filter(x => x == true)
+  console.log(straight.indexOf('A'))
+  // let aaaa = []
+  // for (let i = 0; i < card.length; i++) {
+  //   aaaa.push(straight.indexOf(card[i][0]))
+  // }
+  // console.log(aaaa)
+  console.log(card.map(x => straight.indexOf(x[0])))
+  console.log(card.map(x => straight.indexOf(x[0])).reduce((acc, cur) => acc + cur, 0))
+  // for (let i = 0; i < card.length; i++) {
+  //   card.indexOf()
+  // } 
+  if (rFlush.length == 5 && Object.values(suits)[0] == 5) {
+    console.log('Royal Flush')
+  }
+  console.log(rFlush)
+
 }
 // whichPoker(['AH', 'AS', '2H', 'AH'])
-whichPoker(['AH', 'AH', 'AH', 'AH', 'AH'])
+// whichPoker(['AH', 'AH', 'AH', 'AH', 'AH']) // Flush Five
+// whichPoker(['7D', '4D', '7D', '4D', '7D']) // Flush House
+// whichPoker(['7D', '7S', '7S', '7H', '7C']) // Flush House
+whichPoker(['AD', 'KD', 'QD', 'JD', '0D']) // Royal Flush
