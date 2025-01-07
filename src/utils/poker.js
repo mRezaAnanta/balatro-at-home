@@ -174,23 +174,10 @@ const whichPoker = (card) => {
 // whichPoker(['AD', '3D', '4D', '5D', '2D']) // Straight
 
 
-// let straight = ['A', 'K', 'Q', 'J', '0', '9', '8', '7', '6', '5', '4', '3', '2', 'A']
-// console.log(straight.sort())
-
 // TODO : determine Straight more dynamically
 // TODO : for some reason the func cannot be called from another func
 const isStraight = (card) => {
   const straight = {
-    // 0: ['A', 'K', 'Q', 'J', '0'],
-    // 1: ['K', 'Q', 'J', '0', '9'],
-    // 2: ['Q', 'J', '0', '9', '8'],
-    // 3: ['J', '0', '9', '8', '7'],
-    // 4: ['0', '9', '8', '7', '6'],
-    // 5: ['9', '8', '7', '6', '5'],
-    // 6: ['8', '7', '6', '5', '4'],
-    // 7: ['7', '6', '5', '4', '3'],
-    // 8: ['6', '5', '4', '3', '2'],
-    // 9: ['5', '4', '3', '2', 'A'],
     0: '0AJKQ',
     1: '09JKQ',
     2: '089JQ',
@@ -202,34 +189,19 @@ const isStraight = (card) => {
     8: '23456',
     9: '2345A',
   }
-  let c = card.map(x => x[0]).sort().join('')
-  // console.log(straight[9].sort().join(''))
-  // console.log(c)
-  // console.log(straight[0].sort().join(''), card.sort().join(''))
-  return straight[0] === c ? true :
-    straight[1].sort().join('') === card.sort().join('') ? true :
-      straight[2].sort().join('') === card.sort().join('') ? true :
-        straight[3].sort().join('') === card.sort().join('') ? true :
-          straight[4].sort().join('') === card.sort().join('') ? true :
-            straight[5].sort().join('') === card.sort().join('') ? true :
-              straight[6].sort().join('') === card.sort().join('') ? true :
-                straight[7].sort().join('') === card.sort().join('') ? true :
-                  straight[8].sort().join('') === card.sort().join('') ? true :
-                    straight[9].sort().join('') === card.sort().join('') ? true : false
-  // return straight[0].sort().join('') === c.sort().join('') ? true :
-  //   straight[1].sort().join('') === c.sort().join('') ? true :
-  //     straight[2].sort().join('') === c.sort().join('') ? true :
-  //       straight[3].sort().join('') === c.sort().join('') ? true :
-  //         straight[4].sort().join('') === c.sort().join('') ? true :
-  //           straight[5].sort().join('') === c.sort().join('') ? true :
-  //             straight[6].sort().join('') === c.sort().join('') ? true :
-  //               straight[7].sort().join('') === c.sort().join('') ? true :
-  //                 straight[8].sort().join('') === c.sort().join('') ? true :
-  //                   straight[9].sort().join('') === c.sort().join('') ? true : false
+  let str = card.map(x => x[0]).sort().join('')
+  console.log(str)
+  for (let i = 0; i < Object.keys(straight).length; i++) {
+    if (straight[i] === str) {
+      return true
+    }
+  }
+  return false
 }
 
-console.log(isStraight(['AC', 'KC', 'QC', 'JC', '0C']))
-// console.log(isStraight(['K', 'Q', 'J', '0', '9']))
+// isStraight(['AC', 'KC', 'QC', 'JC', '0C'])
+console.log(isStraight(['K', 'Q', 'J', '0', '9']))
+// console.log(isStraight(['KD', 'QD', 'JD', '0D', '9D']))
 // console.log(isStraight(['Q', 'J', '0', '9', '8']))
 // console.log(isStraight(['J', '0', '9', '8', '7']))
 // console.log(isStraight(['0', '9', '8', '7', '6']))
