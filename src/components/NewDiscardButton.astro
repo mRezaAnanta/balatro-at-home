@@ -18,7 +18,7 @@
         let currentDiscarded = []
 
         let ticked = document.querySelectorAll('input.card-checkbox')
-        console.log(ticked)
+        // console.log(ticked)
 
         // checked which checkbox is being ticked
         ticked.forEach(box => {
@@ -32,10 +32,10 @@
         // set the discardedCard stores to cards and set currentHand stores to the currently discarded card minus the currentHand
         $discardedCard.set(cards)
         $currentHand.set($currentHand.get() - currentDiscarded.length)
-        console.log($discardedCard.get())
+        // console.log($discardedCard.get())
 
         let {drawedCard, deck } = drawCard($deck.get(), $handLimit.get() - $currentHand.get())
-        console.log(drawedCard, deck)
+        // console.log(drawedCard, deck)
         $remainingDeck.set(deck.length)
         $deck.set(deck)
         $currentHand.set($currentHand.get() + drawedCard.length)

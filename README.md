@@ -36,10 +36,10 @@ All commands are run from the root of the project, from a terminal:
 - [x] deal cards button
 - [x] card count logic
 - [x] change from using api to use local logic for drawing card and stuff
+- [] poker logic and make it so that when you select card it will get the pokerhand
 - [] ui and ux fix (with their sounds and stuff)
 - [] for some reason the roundscore is undefined before you play card
 - [] dynamically serve img from assets (learn it from astro.js)
-- [] poker logic
 - [] sort card based on their rank or suit button and logic
 - [] start game windows
 - [] windows for the game (blinds, ante, score, etc) on the left

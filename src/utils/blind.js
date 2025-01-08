@@ -18,7 +18,7 @@ const ante = {
   8: 50000,
 }
 export const winCond = (score, boss) => {
-  console.log(score, boss)
+  // console.log(score, boss)
   return score >= boss
 }
 export const smallBlind = (basescore) => {

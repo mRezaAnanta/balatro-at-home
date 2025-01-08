@@ -8,6 +8,7 @@
   import { $roundScore, $round } from '../utils/gameStores.js'
   import { winCond } from '../utils/blind.js'
   import { count, drawCard, baseDeck } from '../utils/card.js'
+  import { whichPoker } from '../utils/poker.js'
 
   class PlayhandButton extends HTMLElement {
     constructor() {
@@ -19,7 +20,7 @@
       button.addEventListener('click', () => {
         let currentPlayed = []
         let ticked = document.querySelectorAll('input.card-checkbox')
-        console.log(ticked)
+        // console.log(ticked)
 
         // checked which checkbox is being ticked
         ticked.forEach(box => {
@@ -31,26 +32,36 @@
         })
         
         // set the discardedCard stores to cards and set currentHand stores to the currently discarded card minus the currentHand
-        $currentPlayed.set(cards)
-        $currentHand.set($currentHand.get() - currentPlayed.length)
+        // $currentPlayed.set(cards)
+        // $currentHand.set($currentHand.get() - currentPlayed.length)
+        $currentHand.set($currentHand.get() - cards.length)
         console.log($currentHand.get())
 
+        // TODO: get the current pokerhand
+        // console.log($currentPlayed.get())
+        console.log(whichPoker(cards))
+
+        // TODO: set the html element into it's respective pokerhand
+        // document.querySelector('h6.poker').innerText = whichPoker($currentPlayed.get())
+        document.querySelector('h6.poker').innerText = whichPoker(cards)
+
         //count the score logic
-        console.log($currentPlayed.get())
-        let countnow = count($currentPlayed.get())
+        // console.log($currentPlayed.get())
+        // let countnow = count($currentPlayed.get())
+        let countnow = count(cards)
         $roundScore.set(countnow)
         let win = winCond(countnow, 10)
-        console.log(countnow)
-        console.log(win)
+        // console.log(countnow)
+        // console.log(win)
 
         if(win === true) {
           $round.set($round.get() + 1)
         }
 
-        console.log($deck.get())
-        console.log($handLimit.get(), $currentHand.get())
+        // console.log($deck.get())
+        // console.log($handLimit.get(), $currentHand.get())
         let {drawedCard, deck } = drawCard($deck.get(), $handLimit.get() - $currentHand.get())
-        console.log(drawedCard, deck)
+        // console.log(drawedCard, deck)
         $remainingDeck.set(deck.length)
         $deck.set(deck)
         $currentHand.set($currentHand.get() + drawedCard.length)

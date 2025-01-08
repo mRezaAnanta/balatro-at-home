@@ -10,7 +10,9 @@
       </div>
     </div>
     <div class="text-2xl bg-slate-900 border-4 rounded-xl border-slate-900 m-1">
-      <div>Poker Hand</div>
+      <div>
+        <h6 class="poker">Poker Hand</h6>
+      </div>
       <div class="flex justify-center">
         <div class="bg-blue-500 border-4 rounded-xl border-blue-500 w-1/3 justify-self-center m-auto">
           0
@@ -72,32 +74,32 @@
 
   const scoreListener = $roundScore.subscribe((value, oldValue) => {
     document.querySelector('h6.score').innerText = `${$roundScore.get()}`
-    console.log(`roundScore value changed from ${oldValue} to ${value}`)
+    // console.log(`roundScore value changed from ${oldValue} to ${value}`)
   })
 
   const anteListener = $ante.subscribe((value, oldValue) => {
     document.querySelector('h6.ante').innerText = `${$ante.get()}`
-    console.log(`ante value changed from ${oldValue} to ${value}`)
+    // console.log(`ante value changed from ${oldValue} to ${value}`)
   })
 
   const roundListener = $round.subscribe((value, oldValue) => {
     document.querySelector('h6.round').innerText = `${$round.get()}`
     document.querySelector('h6.score').innerText = `${$roundScore.set(0)}`
-    console.log(`round value changed from ${oldValue} to ${value}`)
+    // console.log(`round value changed from ${oldValue} to ${value}`)
   })
 
   const handsListener = $handsRemaining.subscribe((value, oldValue) => {
     document.querySelector('h6.hands').innerText = `${$handsRemaining.get()}`
-    console.log(`handsRemaining value changed from ${oldValue} to ${value}`)
+    // console.log(`handsRemaining value changed from ${oldValue} to ${value}`)
   })
 
   const discardsListener = $discardsRemaining.subscribe((value, oldValue) => {
     document.querySelector('h6.discards').innerText = `${$discardsRemaining.get()}`
-    console.log(`discardsRemaining value changed from ${oldValue} to ${value}`)
+    // console.log(`discardsRemaining value changed from ${oldValue} to ${value}`)
   })
 
   const moneyListener = $money.subscribe((value, oldValue) => {
     document.querySelector('h6.money').innerText = `${$money.get()}`
-    console.log(`discardsRemaining value changed from ${oldValue} to ${value}`)
+    // console.log(`discardsRemaining value changed from ${oldValue} to ${value}`)
   })
 </script>

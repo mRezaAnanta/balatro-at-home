@@ -22,14 +22,14 @@
           let dd = drawCard(baseDeck, $handLimit.get())
           drawedCard = dd.drawedCard
           deck = dd.deck
-          console.log('0')
+          // console.log('0')
         } else {
           let dd = drawCard($deck, $handLimit.get())
           drawedCard = dd.drawedCard
           deck = dd.deck
-          console.log('1')
+          // console.log('1')
         }
-        console.log(drawedCard, deck)
+        // console.log(drawedCard, deck)
 
         if($currentHand == 0) {
           $currentHand.set(drawedCard.length)

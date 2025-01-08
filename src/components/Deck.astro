@@ -15,12 +15,12 @@
 
   const remainingListener = $remainingDeck.subscribe((value, oldValue) => {
     document.querySelector('span.remaining-deck').innerText = `${$remainingDeck.get() }`
-    console.log(`remaining value changed from ${oldValue} to ${value}`)
+    // console.log(`remaining value changed from ${oldValue} to ${value}`)
   })
 
   // TODO: make another deck length store
   const deckListener = $deck.subscribe((value, oldValue) => {
     document.querySelector('span.deck').innerText = `${ $deck.get().length}`
-    console.log(`remaining value changed from ${oldValue} to ${value}`)
+    // console.log(`remaining value changed from ${oldValue} to ${value}`)
   })
 </script>

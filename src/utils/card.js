@@ -20,7 +20,7 @@ export const count = (cardArr, jokerArr = []) => {
     '9': 9,
   }
 
-  console.log(cardArr.map(x => val[x[0]]).reduce((prev, cur) => prev + cur))
+  // console.log(cardArr.map(x => val[x[0]]).reduce((prev, cur) => prev + cur))
   return cardArr.map(x => val[x[0]]).reduce((prev, cur) => prev + cur)
 }
 //
@@ -56,7 +56,7 @@ export const drawCard = (deck, num) => {
     deck = deck.filter(x => x !== drawed[drawed.length - 1])
     i++
   }
-  console.log(drawed, num, deck, deck.length)
+  // console.log(drawed, num, deck, deck.length)
   return {
     drawedCard: drawed,
     deck: deck
