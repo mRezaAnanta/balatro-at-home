@@ -112,6 +112,9 @@ const isTwoPair = (ranks) => {
   let brah = sorted.sort((a, b) => a[1] - b[1])
   // console.log(brah)
   // console.log(brah[brah.length - 1][1], brah[brah.length - 2][1])
+  if (brah.length < 2) {
+    return false
+  }
   if (brah[brah.length - 1][1] == 2 && brah[brah.length - 2][1] == 2) {
     // console.log('Two Pair')
     return true
@@ -169,6 +172,7 @@ export const whichPoker = (card) => {
     !suits[x[1]] ? suits[x[1]] = 1 : suits[x[1]]++
   })
   // console.log(card, obj, ranks, suits)
+  // console.log(Object.keys(obj).length)
 
   // determine how many the ranks is
   let num = 0
@@ -192,7 +196,9 @@ export const whichPoker = (card) => {
   // console.log(`pair: ${isPair(num)}`)
   // console.log(`high card: ${isHighCard(num)}`)
 
-  // TODO: set the order of pokerhand
+  // set the order of pokerhand
+  // TODO: do the function based on how many card is played
+  // ex: if only 4 card is played then dont do the flush / straight func
   if (isFlushFive(obj)) {
     return `Flush Five`
   } else if (isFlushHouse(obj)) {
