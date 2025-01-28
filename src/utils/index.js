@@ -10,13 +10,15 @@ export const drawing = (drawedCard) => {
     img.classList.add(`w-24`)
     btn.value = `${element}`
     btn.classList.add(`card`)
-    // btn.setAttribute('onclick', 'cardSelected(this)')
+    // FIX: get the onclick attribute to work
+    btn.setAttribute('onclick', 'cardSelected(this)')
   
     btn.appendChild(img)
     document.querySelector('div.hand-card-container').appendChild(btn)
   })
+
 }
 
 export const cardSelected = (btn) => {
-    alert(btn.value)
-  }
+  alert(btn.value)
+}
