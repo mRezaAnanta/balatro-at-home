@@ -24,11 +24,11 @@
         } else {
           dd = drawCard($deck, $handLimit.get())
         }
-          drawedCard = dd.drawedCard
-          deck = dd.deck
+        drawedCard = dd.drawedCard
+        deck = dd.deck
         // console.log(drawedCard, deck)
 
-          $currentHand.set($currentHand.get() + drawedCard.length)
+        $currentHand.set($currentHand.get() + drawedCard.length)
         $deck.set(deck)
         $remainingDeck.set($deck.get().length)
 
