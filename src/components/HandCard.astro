@@ -15,11 +15,17 @@
     // console.log(`currentHand value changed from ${oldValue} to ${value}`)
   })
 
-  //const btn = document.querySelector('button.card')
-  //btn.addEventListener('click', () => {
-  //  alert(btn.value)
-  //})
-  export const cardSelected = (btn) => {
-    alert(btn.value)
+  class CardButton extends HTMLElement {
+    constructor() {
+      super()
+
+      this.addEventListener('click', () => {
+        const val = this.children[0].value
+        //alert(val)
+        //console.log(val)
+      })
+    }
   }
+
+  customElements.define('card-button', CardButton)
 </script>
