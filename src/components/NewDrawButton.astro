@@ -13,7 +13,7 @@
       super()
 
       const button = this.querySelector('button.draw-btn')
-      button.addEventListener('click', () => {
+      button?.addEventListener('click', () => {
         // TODO: if deckstore does exist then get the current value type arr
         // if not then get the baseDeck
         // let {drawedCard, deck } = drawCard(baseDeck, $handLimit.get())
@@ -26,7 +26,7 @@
         }
         drawedCard = dd.drawedCard
         deck = dd.deck
-        // console.log(drawedCard, deck)
+        console.log(drawedCard, deck)
 
         $currentHand.set($currentHand.get() + drawedCard.length)
         $deck.set(deck)
