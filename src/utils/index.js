@@ -5,7 +5,7 @@ export const drawing = (drawedCard) => {
     const img = document.createElement('img')
 
     button.value = `${element}`
-    console.log(element)
+    // console.log(element)
     card.classList.add(`w-24`)
   // TODO: search how to dynamically import img in astro.js using Image tag from Astro
   // but atleast just getting the img from the web itself works for now :|
