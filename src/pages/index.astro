@@ -1,15 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-// import DrawButton from '../components/DrawButton.astro'
-import NewDrawButton from '../components/NewDrawButton.astro'
+import DrawButton from '../components/DrawButton.astro'
 // import ResetButton from '../components/ResetButton.astro'
 import DeckID from '../components/DeckID.astro'
 import Deck from '../components/Deck.astro'
 import HandCard from '../components/HandCard.astro'
-// import DiscardButton from '../components/DiscardButton.astro'
-import NewDiscardButton from '../components/NewDiscardButton.astro'
-// import PlaycardButton from '../components/PlaycardButton.astro'
-import NewPlaycardButton from '../components/NewPlaycardButton.astro'
+import DiscardButton from '../components/DiscardButton.astro'
+import PlaycardButton from '../components/PlaycardButton.astro'
 import CheckDiscarded from '../components/CheckDiscarded.astro'
 import CheckPlayed from '../components/CheckPlayed.astro'
 import CheckWin from '../components/CheckWin.astro'
@@ -24,12 +21,11 @@ import RunWindow from '../components/RunWindow.astro'
         <div class="flex flex-col justify-center">
           <HandCard />
           <div class="flex justify-center">
-            <NewPlaycardButton />
+            <PlaycardButton />
             <div>
               <span>Sort Hand</span>
             </div>
-            <!-- <DiscardButton /> -->
-            <NewDiscardButton />
+             <DiscardButton /> 
           </div>
         </div>
         <div class="w-1/3 flex flex-col content-center">
@@ -38,5 +34,5 @@ import RunWindow from '../components/RunWindow.astro'
       </div>
     </div>
   </div>
-          <NewDrawButton />
+  <DrawButton />
 </BaseLayout>

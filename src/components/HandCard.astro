@@ -7,11 +7,41 @@
 </div>
 
 <script>
-  import { $handLimit, $currentHand } from '../utils/handStores.js'
+  import { $handLimit, $currentHand, $selectedCard } from '../utils/handStores.js'
+  import { whichPoker } from '../utils/poker'
 
   // if the currentHand value is changed from the drawbutton then it will change the span to the appropriate number of cards on our hand
   const handListener = $currentHand.subscribe((value, oldValue) => {
     document.querySelector('span.currenthand').innerText = `${$currentHand.get()} / ${$handLimit.get()}`
     // console.log(`currentHand value changed from ${oldValue} to ${value}`)
   })
+
+  class CardButton extends HTMLElement {
+    constructor() {
+      super()
+
+      this.addEventListener('click', () => {
+        let played = $selectedCard.get()
+        const val = this.children[0].value
+        console.log(val, played)
+        // if the value exist then remove it
+        // else add it to the played arr
+        if (played.includes(val)) {
+          played.splice(played.indexOf(val), 1)
+          //console.log("exists")
+        } else {
+          played.push(val)
+          //console.log("doesn't exist")
+        }
+        $selectedCard.set(played)
+        console.log(played, $selectedCard.get())
+
+        // get the poker hand from the selectedCard and put it inside of the h5.poker element
+        document.querySelector('h6.poker').innerText = whichPoker(played)
+        //console.log(whichPoker(played))
+      })
+    }
+  }
+
+  customElements.define('card-button', CardButton)
 </script>
