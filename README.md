@@ -40,7 +40,7 @@ All commands are run from the root of the project, from a terminal:
 - [x] ability to select card to play
 - [x] for some reason the roundscore is undefined before you play card
 - [x] add draggable so that you can drag the card around
-- [] sort card based on their rank or suit button and logic
+- [x] sort card based on their rank or suit button and logic
 - [] ui and ux fix (with their sounds and stuff)
 - [] dynamically serve img from assets (learn it from astro.js)
 - [] start game windows
