@@ -1,0 +1,39 @@
+<sort-suit>
+  <button class="suit-btn">Suit</button>
+</sort-suit>
+
+<script>
+  import { $cardInHand } from "../utils/handStores.js"
+  import { drawing } from '../utils/index.js'
+
+  class SortSuit extends HTMLElement {
+    constructor() {
+      super()
+
+      const button = this.querySelector('button.suit-btn')
+      button?.addEventListener('click', () => {
+        // TODO: make a drag animation when you sort the card
+        // TODO: refactor the functions
+        let card = $cardInHand.get()
+        let tem = []
+        const cardSuits = ['H', 'S', 'D', 'C']
+
+        for(let i = 0; i < cardSuits.length; i++) {
+          for(let j = 0; j < card.length; j++) {
+            if (card[j][1] == cardSuits[i]) {
+              tem.push(card[j])
+            }
+          }
+        }
+
+        let container = document.querySelector('div.hand-card-container')
+        while(container?.hasChildNodes()) {
+          container.removeChild(container.firstElementChild)
+        }
+        drawing(tem)
+      })
+    }
+  }
+
+  customElements.define('sort-suit', SortSuit)
+</script>
