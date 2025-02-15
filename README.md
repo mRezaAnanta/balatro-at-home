@@ -38,10 +38,11 @@ All commands are run from the root of the project, from a terminal:
 - [x] change from using api to use local logic for drawing card and stuff
 - [x] add poker logic 
 - [x] ability to select card to play
+- [x] for some reason the roundscore is undefined before you play card
+- [x] add draggable so that you can drag the card around
+- [x] sort card based on their rank or suit button and logic
 - [] ui and ux fix (with their sounds and stuff)
-- [] for some reason the roundscore is undefined before you play card
 - [] dynamically serve img from assets (learn it from astro.js)
-- [] sort card based on their rank or suit button and logic
 - [] start game windows
 - [] windows for the game (blinds, ante, score, etc) on the left
 - [] joker & special cards windows & logic

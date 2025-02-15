@@ -1,0 +1,39 @@
+<sort-rank>
+  <button class="rank-btn">Rank</button>
+</sort-rank>
+
+<script>
+  import { $cardInHand } from "../utils/handStores.js"
+  import { drawing } from '../utils/index.js'
+
+  class SortRank extends HTMLElement {
+    constructor() {
+      super()
+
+      const button = this.querySelector('button.rank-btn')
+      button?.addEventListener('click', () => {
+        // TODO: make a drag animation when you sort the card
+        // TODO: refactor the functions
+        let card = $cardInHand.get()
+        let tem = []
+        const cardRanks = ['A', 'K', 'Q', 'J', '0', '9', '8', '7', '6', '5', '4', '3', '2', '1']
+
+        for(let i = 0; i < cardRanks.length; i++) {
+          for(let j = 0; j < card.length; j++) {
+            if (card[j][0] == cardRanks[i]) {
+              tem.push(card[j])
+            }
+          }
+        }
+
+        let container = document.querySelector('div.hand-card-container')
+        while(container?.hasChildNodes()) {
+          container.removeChild(container.firstElementChild)
+        }
+        drawing(tem)
+      })
+    }
+  }
+
+  customElements.define('sort-rank', SortRank)
+</script>

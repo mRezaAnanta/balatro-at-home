@@ -9,7 +9,12 @@
 <script>
   import { $handLimit, $currentHand, $selectedCard } from '../utils/handStores.js'
   import { whichPoker } from '../utils/poker'
+  import { Sortable } from '@shopify/draggable'
 
+  // So that the card could be drag
+  const sortable = new Sortable(document.querySelectorAll('div.hand-card-container'), {
+    draggable: 'card-button',
+  });
   // if the currentHand value is changed from the drawbutton then it will change the span to the appropriate number of cards on our hand
   const handListener = $currentHand.subscribe((value, oldValue) => {
     document.querySelector('span.currenthand').innerText = `${$currentHand.get()} / ${$handLimit.get()}`
