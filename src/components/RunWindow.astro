@@ -5,8 +5,6 @@
       <!-- TODO: center the vertical alignment -->
       <div class="w-3/4 content-center items-center self-center bg-slate-400 border-4 rounded-xl border-slate-400">
         <h6 class="score text-3xl self-center">0</h6>
-        <!-- <h6 class="score hidden">0</h6> -->
-        <!-- <h6 class="initialscore text-3xl self-center">0</h6> -->
       </div>
     </div>
     <div class="text-2xl bg-slate-900 border-4 rounded-xl border-slate-900 m-1">
@@ -84,7 +82,8 @@
 
   const roundListener = $round.subscribe((value, oldValue) => {
     document.querySelector('h6.round').innerText = `${$round.get()}`
-    document.querySelector('h6.score').innerText = `${$roundScore.set(0)}`
+    document.querySelector('h6.score').innerText = `0`
+    $roundScore.set(0)
     // console.log(`round value changed from ${oldValue} to ${value}`)
   })
 
