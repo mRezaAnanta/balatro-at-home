@@ -6,7 +6,7 @@
   import { drawing } from '../utils/index.js'
   import { drawCard, baseDeck } from '../utils/card.js'
   import { $deck, $remainingDeck } from '../utils/deckStores.js'
-  import { $handLimit, $currentHand } from '../utils/handStores.js'
+  import { $handLimit, $currentHand, $cardInHand } from '../utils/handStores.js'
 
   class DrawButton extends HTMLElement {
     constructor() {
@@ -33,6 +33,7 @@
         $remainingDeck.set($deck.get().length)
 
         drawing(drawedCard)
+        $cardInHand.set(drawedCard)
       })
     }
   }
