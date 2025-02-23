@@ -11,6 +11,8 @@ import CheckDiscarded from '../components/CheckDiscarded.astro'
 import CheckPlayed from '../components/CheckPlayed.astro'
 import CheckWin from '../components/CheckWin.astro'
 import RunWindow from '../components/RunWindow.astro'
+import SortSuit from '../components/SortSuit.astro'
+import SortRank from '../components/SortRank.astro'
 ---
 
 <BaseLayout>
@@ -24,6 +26,8 @@ import RunWindow from '../components/RunWindow.astro'
             <PlaycardButton />
             <div>
               <span>Sort Hand</span>
+              <SortSuit />
+              <SortRank />
             </div>
              <DiscardButton /> 
           </div>
