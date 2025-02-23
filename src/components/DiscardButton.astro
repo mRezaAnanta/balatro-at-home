@@ -4,7 +4,7 @@
 
 <script>
   import { $deck, $remainingDeck, $discardedCard } from '../utils/deckStores.js'
-  import { $handLimit, $currentHand, $selectedCard } from '../utils/handStores.js'
+  import { $handLimit, $currentHand, $selectedCard, $cardInHand  } from '../utils/handStores.js'
   import { drawCard } from '../utils/card.js'
   import { drawing } from '../utils/index.js'
 
@@ -21,29 +21,34 @@
 
         let selected = document.querySelectorAll('card-button>button')
         let discarded = $selectedCard.get()
-        console.log(selected, discarded)
+        let inHand = $cardInHand.get()
+        //console.log(selected, discarded, $cardInHand.get(), inHand)
 
         //if the value is included in $selectedCard
         //delete the element which has the value
         selected.forEach(card => {
-          if ($selectedCard.get().includes(card.value)) {
-            discarded.splice(discarded.indexOf(card.value), 1)
+          if (discarded.includes(card.value)) {
+            inHand.splice(inHand.indexOf(card.value), 1)
             card.parentElement.remove()
-            console.log(card.value)
+            //console.log(card.value)
           }
         })
-        console.log(discarded)
-        $selectedCard.set(discarded)
+        //console.log($cardInHand.get(), inHand)
+        $selectedCard.set([])
 
         // get how many card can i draw
         let { drawedCard, deck } = drawCard($deck.get(), $handLimit.get() - $currentHand.get())
         $remainingDeck.set(deck.length)
         $deck.set(deck)
         $currentHand.set($currentHand.get() + drawedCard.length)
-        console.log($currentHand.get(), drawedCard)
+        //console.log($currentHand.get(), drawedCard)
 
         // draw the card from deck
         drawing(drawedCard)
+        // set add the new card that is drawn to the cardInHand
+        inHand.push(...drawedCard)
+        //$cardInHand.set()
+        console.log($cardInHand.get(), inHand, discarded)
       })
     }
   }
