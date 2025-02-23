@@ -14,6 +14,8 @@
   // So that the card could be drag
   const sortable = new Sortable(document.querySelectorAll('div.hand-card-container'), {
     draggable: 'card-button',
+    // so that it could be clicked
+    distance: 10,
   });
   // if the currentHand value is changed from the drawbutton then it will change the span to the appropriate number of cards on our hand
   const handListener = $currentHand.subscribe((value, oldValue) => {
