@@ -3,11 +3,11 @@
 </playhand-button>
 
 <script>
-  import { $deck, $remainingDeck, $discardedCard } from '../utils/deckStores.js'
-  import { $handLimit, $currentHand, $currentPlayed, $playedCard, $selectedCard } from '../utils/handStores.js'
-  import { $roundScore, $round } from '../utils/gameStores.js'
+  import { $deck, $remainingDeck } from '../utils/deckStores.js'
+  import { $handLimit, $currentHand, $selectedCard, $cardInHand } from '../utils/handStores.js'
+  import { $roundScore } from '../utils/gameStores.js'
   import { winCond } from '../utils/blind.js'
-  import { count, drawCard, baseDeck } from '../utils/card.js'
+  import { count, drawCard } from '../utils/card.js'
   import { whichPoker } from '../utils/poker.js'
   import { drawing } from '../utils/index.js'
 
@@ -24,10 +24,12 @@
 
         let selected = document.querySelectorAll('card-button>button')
         let played = $selectedCard.get()
+        let inHand = $cardInHand.get()
         //console.log(selected, played)
 
         // get the poker hand
-        console.log($selectedCard.get(), whichPoker($selectedCard.get()), played)
+        //console.log($selectedCard.get(), whichPoker($selectedCard.get()), played)
+        whichPoker($selectedCard.get())
 
         //count the score logic
         let countnow = count($selectedCard.get())
@@ -38,17 +40,14 @@
         //  $round.set($round.get() + 1)
         //}
 
-        //if the value is included in $selectedCard
-        //delete the element which has the value
         selected.forEach(card => {
-          if ($selectedCard.get().includes(card.value)) {
-            played.splice(played.indexOf(card.value), 1)
+          if (played.includes(card.value)) {
+            inHand.splice(inHand.indexOf(card.value), 1)
             card.parentElement.remove()
-            //console.log(card.value)
           }
         })
-        //console.log(played)
-        $selectedCard.set(played)
+        //console.log(played, $cardInHand.get(), inHand)
+        $selectedCard.set([])
 
         // get how many card can i draw
         let { drawedCard, deck } = drawCard($deck.get(), $handLimit.get() - $currentHand.get())
@@ -57,8 +56,9 @@
         $currentHand.set($currentHand.get() + drawedCard.length)
         //console.log($currentHand.get(), drawedCard)
 
-        // draw the card from deck
         drawing(drawedCard)
+        inHand.push(...drawedCard)
+        console.log($cardInHand.get(), inHand, played)
       })
     }
   }
