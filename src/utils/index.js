@@ -5,13 +5,9 @@ export const drawing = (drawedCard) => {
     const img = document.createElement('img')
 
     button.value = `${element}`
-    // console.log(element)
     card.classList.add(`w-24`)
-  // TODO: search how to dynamically import img in astro.js using Image tag from Astro
-  // but atleast just getting the img from the web itself works for now :|
-  // img.src = `https://deckofcardsapi.com/static/img/${element}.png`
-  // img.src = `/card/${element}.png`
-    img.src = `https://deckofcardsapi.com/static/img/${element}.png`
+    img.src = `/cards/${element}.png`
+    // img.src = `https://deckofcardsapi.com/static/img/${element}.png` // if the assets is not working
     card.appendChild(button)
     button.appendChild(img)
     document.querySelector('div.hand-card-container').appendChild(card)
